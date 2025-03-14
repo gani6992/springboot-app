@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Run Maven build command within a steps block
-                sh 'mvn -f springboot-app/pom.xml clean install'
+                sh 'mvn clean install'
             }
         }
 
