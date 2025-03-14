@@ -4,7 +4,15 @@ pipeline {
     environment {
         registry = "982081081194.dkr.ecr.us-east-1.amazonaws.com/devops/my-docker-repo"
     }
-    
+
+    stage ('Build') {
+            sh 'mvn -f MyAwesomeApp/pom.xml clean install'            
+        }
+        
+    stage ('archive') {
+            archiveArtifacts '**/*.jar'
+        }
+
     stages {
         stage('Checkout') {
             steps {
