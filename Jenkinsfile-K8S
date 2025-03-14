@@ -10,15 +10,6 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gani6992/springboot-app.git']]])
             }
         }
-
-        stage ('Build') {
-            sh 'mvn -f MyAwesomeApp/pom.xml clean install'            
-        }
-
-        stage ('archive') {
-            archiveArtifacts '**/*.jar'
-        }
-        
         
         stage ("Build image") {
             steps {
